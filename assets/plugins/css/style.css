@@ -107,6 +107,10 @@ fieldset {
 	padding: 0;
 }
 
+.ui-menu .ui-menu-item {
+	background-color: #f2eeee;
+}
+
 /*START PRELOADER DESIGN*/
 #page-preloader {
 	background: #ffffff;

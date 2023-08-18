@@ -12,6 +12,8 @@
     <!-- Google Font  -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,700|Raleway:400,400i,500i,600,700"
         rel="stylesheet">
+    <!-- jquery ui -->
+    <link rel="stylesheet" href="../assets/plugins/jquery-ui-1.13.2/jquery-ui.min.css">
     <!-- flaticon icon -->
     <link rel="stylesheet" href="../assets/plugins/fonts/icon-font.min.css">
     <!-- icofont icon -->
@@ -36,6 +38,8 @@
     <script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
     <!-- Latest compiled and minified Bootstrap -->
     <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jquery ui js  -->
+    <script src="../assets/plugins/jquery-ui-1.13.2/jquery-ui.min.js"></script>
     <!-- meanmenu min js  -->
     <script src="../assets/plugins/js/jquery.meanmenu.min.js"></script>
     <!-- Sticky JS -->

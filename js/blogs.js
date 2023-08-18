@@ -9,6 +9,7 @@ const getAllBlogs = () => {
 
             if (parsedResponse.statusCode === 0) {
                 const data = parsedResponse.data;
+
                 let html = "";
                 data.forEach(item => {
                     html += `
@@ -35,11 +36,10 @@ const getAllBlogs = () => {
                                     <span class="post-date"><i class="lnr lnr-calendar-full"></i> ${item.created.substring(0, 10)}</span>
                                     <span class="post-user"><i class="lnr lnr-user"></i> ${item.author}</span>
                                     <span class="allpost-cata"><i class="lnr lnr-tag"></i> ${item.tag}</span>
-                                    <span class="post-comment"><i class="lnr lnr-bubble"></i> 3 comments</span>
+                                    <span class="post-comment"><i class="lnr lnr-bubble"></i> ${item.comments ? item.comments : 0} comments</span>
                                 </div>
                                 <p>${item.content.substring(0, 200)}...</p>
-                                <a href="single-blog.php?blog=${item.id}" class="blog-home-rmbtn">Continue <i
-                                        class="icofont icofont-long-arrow-right"></i></a>
+                                <a href="single-blog.php?blog=${item.id}" class="blog-home-rmbtn">Continue <i class="icofont icofont-long-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>`;

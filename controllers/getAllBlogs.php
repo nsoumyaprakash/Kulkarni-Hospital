@@ -2,11 +2,13 @@
 	try {
 		require_once '../assets/utils/_dbconfig.php';
         
-		$resData = [];
+		$blogs = [];
+		$comments = [];
 		$sql = "SELECT `id`, `thumbnail`, `title`, `content`, `tag`, `author`, `author_img`, `created` FROM `blogs` WHERE `deleted` IS NULL ORDER BY `created` DESC";
 		$result = mysqli_query($conn, $sql);
+        $commentsResult = mysqli_query($conn, "SELECT `blog_id` FROM `blog_comments` WHERE `deleted` IS NULL");
         
-        if (!$result) {
+        if (!$result || !$commentsResult) {
             $data = [
                 "status" => "Failed",
                 "statusCode" => 500,
@@ -27,7 +29,23 @@
 		}
 
         while ($rows = mysqli_fetch_assoc($result)) {
-            array_push($resData, $rows);
+            array_push($blogs, $rows);
+        }
+
+        while ($rows = mysqli_fetch_assoc($commentsResult)) {
+            array_push($comments, $rows);
+        }
+
+        for ($i=0; $i < count($comments); $i++) {
+            for ($j=0; $j < count($blogs); $j++) {
+                if ($comments[$i]['blog_id'] == $blogs[$j]['id']) {
+                    if (isset($blogs[$j]['comments'])) {
+                        $blogs[$j]['comments'] = $blogs[$j]['comments'] + 1;
+                    }else {
+                        $blogs[$j]['comments'] = 1;
+                    }
+                }
+            }
         }
 
         // Close the connection
@@ -36,7 +54,7 @@
         $data = [
             "status" => "Success",
             "statusCode" => 0,
-            "data" => $resData
+            "data" => $blogs
         ];
 
         echo json_encode($data);

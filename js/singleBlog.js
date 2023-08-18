@@ -10,6 +10,7 @@ const getSingleBlog = (blogId) => {
 
             if (parsedResponse.statusCode === 0) {
                 const data = parsedResponse.data[0];
+
                 const html = `
                 <div class="single-blog mb-3">
                     <div class="single-blog-img">
@@ -29,7 +30,7 @@ const getSingleBlog = (blogId) => {
                                 <span class="post-date"><i class="lnr lnr-calendar-full"></i> ${data.created.substring(0, 10)}</span>
                                 <span class="post-user"><i class="lnr lnr-user"></i> ${data.author}</span>
                                 <span class="allpost-cata"><i class="lnr lnr-tag"></i> ${data.tag}</span>
-                                <span class="post-comment"><i class="lnr lnr-bubble"></i> 3 comments</span>
+                                <span class="post-comment"><i class="lnr lnr-bubble"></i> ${data.comments ? data.comments : 0} comments</span>
                             </div>
                             <p>${data.content}</p>
                         </div>
@@ -55,7 +56,7 @@ const getComments = (blogId) => {
 
             if (parsedResponse.statusCode === 0) {
                 const data = parsedResponse.data;
-                console.log(data);
+
                 let html = "";
                 data.forEach(item => {
                     html += `
@@ -109,6 +110,7 @@ $(document).ready(() => {
                 if (parsedResponse.statusCode === 0) {
                     $(e.target).trigger("reset");
                     getComments(blogParam);
+                    getSingleBlog(blogParam);
                 }
             },
             error: (error) => {
