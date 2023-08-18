@@ -57,7 +57,7 @@
                     <div class="col-lg-9 d-lg-block d-md-none d-sm-none d-none ">
                         <nav class="navbar navbar-expand-lg justify-content-left">
                             <ul class="navbar-nav">
-                                <li class="active"><a href="home.php" class="nav-link">Home</a></li>
+                                <li><a href="home.php" class="nav-link">Home</a></li>
                                 <li class="dropdown"><a href="services.php" class="nav-link">Services</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="single-service.php?service=8">Neurology</a></li>
