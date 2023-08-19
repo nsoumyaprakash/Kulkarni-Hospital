@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
-    <title>kulkarrnismedzonne - Responsive Health And Medical Template</title>
+    <title>Kulkarni Medzone - We are concern for your health</title>
     <!-- Bootstrap core CSS -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Font  -->
@@ -14,6 +14,8 @@
         rel="stylesheet">
     <!-- jquery ui -->
     <link rel="stylesheet" href="../assets/plugins/jquery-ui-1.13.2/jquery-ui.min.css">
+    <!-- flaticon icon -->
+    <link rel="stylesheet" href="../assets/plugins/css/gijgo.min.css">
     <!-- flaticon icon -->
     <link rel="stylesheet" href="../assets/plugins/fonts/icon-font.min.css">
     <!-- icofont icon -->

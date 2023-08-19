@@ -1,2 +1,1 @@
-1. Make functional to the appointment page.
-2. Make functional to the Popular Services, Popular Doctors in single services page.
+all done for now

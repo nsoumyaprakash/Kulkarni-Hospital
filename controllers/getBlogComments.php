@@ -1,7 +1,7 @@
 <?php
-    require_once '../assets/utils/_dbconfig.php';
-    
     try {
+        require_once '../assets/utils/_dbconfig.php';
+        
         if ($_SERVER["REQUEST_METHOD"] == "POST") {   
             $blogId = $_POST['blogId'];
             $resData = [];

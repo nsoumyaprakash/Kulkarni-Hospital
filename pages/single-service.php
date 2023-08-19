@@ -10,11 +10,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#"><span class="lnr lnr-home"></span></a></li>
-                    <li class="breadcrumb-item">Pages</li>
-                    <li class="breadcrumb-item active">Single Service</li>
-                </ol>
+                <ol class="breadcrumb"></ol>
             </div>
         </div>
         <!-- end row-->
@@ -27,75 +23,9 @@
 <section id="service" class="section-padding">
     <div class="auto-container">
         <div class="row">
-            <aside class="col-lg-4 col-md-4 col-sm-12 col-12 mb-lg-0 mb-md-0 mb-sm-5 mb-5 pr-lg-5 pr-md-5 pr-sm-0 pr-0">
-                <div class="sidebar-widget">
-                    <h5 class="widget-title">Popular Services</h5>
-                    <!-- end widget tittle-->
-                    <div class="servide-list">
-                        <a href="services.php">View All</a>
-                        <div class="servide-list-drop">
-                            <div class="form-group">
-                                <select class="form-control" id="serviceselect">
-                                    <option>Most Popular</option>
-                                    <option>Baby Care</option>
-                                    <option>Cancer Care</option>
-                                    <option>Enrage Surgery</option>
-                                </select>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><a href="#"><i class="icofont icofont-blood"></i> Accident & Emergency</a> </li>
-                            <li class="active"><a href="#"><i class="icofont icofont-stethoscope-alt"></i> Health
-                                    checks</a> </li>
-                            <li><a href="#"><i class="icofont icofont-prescription"></i> Home Care</a> </li>
-                            <li><a href="#"><i class="icofont icofont-autism"></i> Diabetes & Endocrinology</a> </li>
-                            <li><a href="#"><i class="icofont icofont-test-bottle"></i> Bariatric Surgery</a> </li>
-                            <li><a href="#"><i class="icofont icofont-paralysis-disability"></i> Dental Medicine</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- end widget -->
-                <div class="sidebar-widget">
-                    <h5 class="widget-title">Contact Support</h5>
-                    <!-- end widget tittle-->
-                    <div class="contact-wid text-center">
-                        <div class="contact-wid-icon">
-                            <i class="icofont icofont-live-support"></i>
-                        </div>
-                        <p><a href="#"><i class="icofont icofont-phone"></i> +88 315 67 39</a></p>
-                    </div>
-                </div>
-                <!-- end widget -->
-                <div class="sidebar-widget">
-                    <h5 class="widget-title">Popular Doctors</h5>
-                    <!-- end widget tittle-->
-                    <div class="related_doc_widget">
-                        <div class="blog-singleRecpost">
-                            <img class="img-fluid" src="../img/bg/doccc.jpg" alt="">
-                            <h5 class="blog-recTitle">
-                                <a href="#">Stevest Henry</a>
-                            </h5>
-                            <p>Ophthalmologist</p>
-                        </div>
-                        <div class="blog-singleRecpost">
-                            <img class="img-fluid" src="../img/bg/doccc.jpg" alt="">
-                            <h5 class="blog-recTitle">
-                                <a href="#">Williums Kevins</a>
-                            </h5>
-                            <p>Dermatologist</p>
-                        </div>
-                        <div class="blog-singleRecpost">
-                            <img class="img-fluid" src="../img/bg/doccc.jpg" alt="">
-                            <h5 class="blog-recTitle">
-                                <a href="#">Kewillues Jenifer</a>
-                            </h5>
-                            <p>Radiologist</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- end widget -->
-            </aside>
+
+            <?php include "../assets/utils/_serviceSidebar.php" ?>
+
             <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                 <div class="image-tab">
                     <div class="row">

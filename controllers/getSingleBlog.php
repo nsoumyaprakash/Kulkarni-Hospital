@@ -1,8 +1,8 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        try {
-            require_once '../assets/utils/_dbconfig.php';
-            
+    try {
+        require_once '../assets/utils/_dbconfig.php';
+        
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $blogId = $_POST['blogId'];
             $resData = [];
             $sql = "SELECT `thumbnail`, `title`, `content`, `tag`, `author`, `author_img`, `created` FROM `blogs` WHERE `id`='$blogId' AND `deleted` IS NULL";
@@ -46,17 +46,16 @@
 
             echo json_encode($data);
             exit();
-            
-        } catch (Exception $e) {
-            $data = [
-                "status" => "Failed",
-                "statusCode" => $e->getCode(),
-                "errorLine" => $e->getLine(),
-                "errorFile" => $e->getFile(),
-                "errorMessage" => $e->getMessage()
-            ];
-            echo json_encode($data);
-            exit();
         }
+    } catch (Exception $e) {
+        $data = [
+            "status" => "Failed",
+            "statusCode" => $e->getCode(),
+            "errorLine" => $e->getLine(),
+            "errorFile" => $e->getFile(),
+            "errorMessage" => $e->getMessage()
+        ];
+        echo json_encode($data);
+        exit();
     }
 ?>

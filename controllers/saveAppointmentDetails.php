@@ -1,15 +1,20 @@
 <?php
     try {
         require_once '../assets/utils/_dbconfig.php';
+        require_once '../assets/utils/_phputils.php';
         
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $name = $_POST['cname'];
-            $email = $_POST['cmail'];
-            $phone = $_POST['cnumber'];
-            $subject = $_POST['csubject'];
-            $message = $_POST['cmessage'];
-
-            $sql = "INSERT INTO `contact_enquiries` (`name`, `email`, `phone`, `subject`, `message`, `created`) VALUES ('$name', '$email', '$phone', '$subject', '$message', current_timestamp());";
+            $orgCode = $_POST['apptHospital'];
+            $deptId = $_POST['apptDepartment'];
+            $docId = $_POST['apptDoctor'];
+            $apptDateTime = isset($_POST['apptDateTime']) ? dateTimeFormater($_POST['apptDateTime'], "Y-m-d H:i:s") : NULL;
+            $apptPatientName = $_POST['apptPatientName'];
+            $apptPatientEmail = $_POST['apptPatientEmail'];
+            $apptPatientPhone = $_POST['apptPatientPhone'];
+            $apptPatientAddress = $_POST['apptPatientAddress'];
+            $apptPatientMessage = $_POST['apptPatientMessage'];
+            
+            $sql = "INSERT INTO `appointments` (`org_code`, `dept_id`, `doc_id`, `appt_datetime`, `name`, `email`, `phone`, `address`, `message`, `created`) VALUES ('$orgCode', '$deptId', '$docId', '$apptDateTime', '$apptPatientName', '$apptPatientEmail', '$apptPatientPhone', '$apptPatientAddress', '$apptPatientMessage', current_timestamp())";
             $result = mysqli_query($conn, $sql);
             
             if (!$result) {
@@ -28,7 +33,7 @@
             $data = [
                 "status" => "Success",
                 "statusCode" => 0,
-                "message" => "THANK YOU FOR CONTACTING US! WE WILL GET BACK TO YOU SOON."
+                "message" => "YOUR APPOINTMENT BOOKED SUCCESSFULLY!"
             ];
 
             echo json_encode($data);

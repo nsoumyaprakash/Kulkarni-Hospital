@@ -1,6 +1,4 @@
-<?php
-	include "../assets/utils/_header.php";
-?>
+<?php include "../assets/utils/_header.php" ?>
 
 <!-- START PAGE BANNER AND BREADCRUMBS -->
 <section class="single-page-title-area" data-background="../img/bg/heading.png">
@@ -12,8 +10,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                <ol class="breadcrumb">
-                </ol>
+                <ol class="breadcrumb"></ol>
             </div>
         </div>
         <!-- end row-->
@@ -41,8 +38,8 @@
                         <div class="single-step-icon">
                             <i class="icofont icofont-hospital"></i>
                         </div>
-                        <h5>Search For A Hospital</h5>
-                        <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        <h5>Search For Department</h5>
+                        <p>Select a Department.</p>
                     </div>
                 </div>
                 <!-- end single step -->
@@ -51,8 +48,8 @@
                         <div class="single-step-icon">
                             <i class="icofont icofont-job-search"></i>
                         </div>
-                        <h5>Search For A Doctor</h5>
-                        <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        <h5>Search For Doctor</h5>
+                        <p>Select a doctor.</p>
                     </div>
                 </div>
                 <!-- end single step -->
@@ -62,7 +59,7 @@
                             <i class="icofont icofont-pencil"></i>
                         </div>
                         <h5>Fill Out The From</h5>
-                        <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        <p>Fill the details correctly.</p>
                     </div>
                 </div>
                 <!-- end single step -->
@@ -72,7 +69,7 @@
                             <i class="icofont icofont-verification-check"></i>
                         </div>
                         <h5>Appointment Done</h5>
-                        <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        <p>Click on book appointment.</p>
                     </div>
                 </div>
                 <!-- end single step -->
@@ -81,58 +78,50 @@
         <div class="row mt-5">
             <div class="col-lg-8 mx-auto">
                 <div class="appointment-form-ma">
-                    <form>
+                    <form id="bookApptForm">
                         <div class="row">
                             <div class="form-group col-lg-6">
-                                <label>Select Hospital</label>
-                                <select class="form-control">
-                                    <option>Sensiv Hospital</option>
-                                    <option>Sensiv Hospital 1</option>
-                                    <option>Sensiv Hospital 2</option>
-                                    <option>Sensiv Hospital 3</option>
-                                    <option>Sensiv Hospital 4</option>
+                                <label>Hospital</label>
+                                <select class="form-control" id="apptHospital" name="apptHospital" required>
+                                    <option value="kul123" selected>Kulkarni Medzone</option>
                                 </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Select Department</label>
-                                <select class="form-control">
-                                    <option>Select Department</option>
-                                    <option>Select Department 1</option>
-                                    <option>Select Department 2</option>
-                                    <option>Select Department 3</option>
-                                    <option>Select Department 4</option>
+                                <select class="form-control" id="apptDepartment" name="apptDepartment" required>
+                                    <option value="" selected>Select Department</option>
                                 </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Select Doctor</label>
-                                <select class="form-control">
-                                    <option>Doctor Name 1</option>
-                                    <option>Doctor Name 2</option>
-                                    <option>Doctor Name 3</option>
-                                    <option>Doctor Name 4</option>
-                                    <option>Doctor Name 5</option>
+                                <select class="form-control" id="apptDoctor" name="apptDoctor" required>
+                                    <option value="" selected>Select Doctor</option>
                                 </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Select Date</label>
-                                <input type="text" id="datepicker" class="form-control datepicker" id="afmdt"
-                                    placeholder="Click Calender Icon">
+                                <input type="text" id="apptDatepicker" name="apptDateTime"
+                                    class="form-control datepicker" placeholder="Click Calender Icon" required>
                             </div>
                             <div class="form-group col-lg-6 mt-2">
-                                <input type="text" class="form-control" id="afmn" placeholder="Patient Name">
+                                <input type="text" class="form-control" id="apptPatientName" name="apptPatientName"
+                                    placeholder="Patient Name" required>
                             </div>
                             <div class="form-group col-lg-6 mt-2">
-                                <input type="email" class="form-control" id="afme" placeholder="Your Email">
+                                <input type="email" class="form-control" id="apptPatientEmail" name="apptPatientEmail"
+                                    placeholder="Your Email" required>
                             </div>
                             <div class="form-group col-lg-6 mt-2">
-                                <input type="text" class="form-control" id="afmp" placeholder="Phone Number">
+                                <input type="text" class="form-control" id="apptPatientPhone" name="apptPatientPhone"
+                                    placeholder="Phone Number" required>
                             </div>
                             <div class="form-group col-lg-6 mt-2">
-                                <input type="text" class="form-control" id="afma" placeholder="Your Address">
+                                <input type="text" class="form-control" id="apptPatientAddress"
+                                    name="apptPatientAddress" placeholder="Your Address" required>
                             </div>
                             <div class="form-group col-lg-12">
-                                <textarea rows="6" class="form-control" id="afmd" placeholder="Your Message"
-                                    required="required"></textarea>
+                                <textarea rows="6" class="form-control" id="apptPatientMessage"
+                                    name="apptPatientMessage" placeholder="Your Message" required="required"></textarea>
                             </div>
                             <div class="form-group col-lg-12">
                                 <button type="submit" class="btn btn-apfm">Book Appointment <i
@@ -163,32 +152,32 @@
             <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 pr-5">
-                        <h4>Lorem ipsum dolor</h4>
-                        <p>Pellentesque habitant morbi tristique senectus et netus et.</p>
+                        <h4>Reach Us</h4>
+                        <p>Now you can connect us through internet.</p>
                         <div class="single-quote">
                             <i class="icofont icofont-xray"></i>
                             <h5>INTERNATIONAL PATIENTS</h5>
-                            <p>Lorem ipsum dolor consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                            <p>Our patients are across the glove.</p>
                         </div>
                         <div class="single-quote">
                             <i class="icofont icofont-ui-network"></i>
                             <h5>VIRTUAL TOUR</h5>
-                            <p>Lorem ipsum dolor consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                            <p>You can reach us using virtual platforms.</p>
                         </div>
                     </div>
                     <!-- end col -->
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 pr-5">
-                        <h4>Lorem ipsum dolor</h4>
-                        <p>Pellentesque habitant morbi tristique senectus et netus et.</p>
+                        <h4>Get Facilities</h4>
+                        <p>Now you can get all these facilities online.</p>
                         <div class="single-quote">
                             <i class="icofont icofont-laboratory"></i>
                             <h5>ACCESS LABREPORTS</h5>
-                            <p>Lorem ipsum dolor consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                            <p>Get your test reports instantly.</p>
                         </div>
                         <div class="single-quote">
                             <i class="icofont icofont-briefcase-alt-2"></i>
                             <h5>BOASTER PACKAGE</h5>
-                            <p>Lorem ipsum dolor consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                            <p>Get extra facilities using our packages.</p>
                         </div>
                     </div>
                     <!-- end col -->
@@ -201,7 +190,6 @@
 </section>
 <!-- END APPOINTMENT INFO -->
 
+<script src="../js/appointment.js"></script>
 
-<?php
-	include "../assets/utils/_footer.php";
-?>
+<?php include "../assets/utils/_footer.php" ?>

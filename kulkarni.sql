@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2023 at 07:31 AM
+-- Generation Time: Aug 19, 2023 at 11:46 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 7.4.33
 
@@ -72,6 +72,28 @@ INSERT INTO `about_features` (`id`, `title`, `content`, `icon`, `created`, `upda
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `appointments`
+--
+
+CREATE TABLE `appointments` (
+  `id` int(11) NOT NULL,
+  `org_code` varchar(50) DEFAULT NULL,
+  `dept_id` int(11) DEFAULT NULL,
+  `doc_id` int(11) DEFAULT NULL,
+  `appt_datetime` timestamp NULL DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `phone` varchar(15) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated` timestamp NULL DEFAULT NULL,
+  `deleted` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `blogs`
 --
 
@@ -94,7 +116,7 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`id`, `thumbnail`, `title`, `content`, `tag`, `author`, `author_img`, `isActive`, `created`, `updated`, `deleted`) VALUES
-(1, '1.jpg', 'What You Need To Know About Bone Marrow Transplantation', 'Pellentesque Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium\r\n                                doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et\r\n                                quasi architecto beatae vitae dicta sunt explicabo.', 'hashtheme, Sensiv', 'Admin', '1.jpg', 0, '2023-08-16 04:15:22', NULL, NULL),
+(1, '1.jpg', 'What You Need To Know About Bone Marrow Transplantation', 'Pellentesque Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium\r\n                                doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et\r\n                                quasi architecto beatae vitae dicta sunt explicabo.', 'hashtheme, Sensiv', 'Admin', '1.jpg', 0, '2023-08-16 04:20:22', NULL, NULL),
 (2, '1.jpg', 'What You Need To Know About Bone Marrow Transplantation', 'Pellentesque Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium\r\n doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et\r\n quasi architecto beatae vitae dicta sunt explicabo.', 'hashtheme, Sensiv', 'Admin', '1.jpg', 0, '2023-08-16 04:17:56', NULL, NULL),
 (3, '1.jpg', 'What You Need To Know About Bone Marrow Transplantation', 'Pellentesque Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium\r\n doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et\r\n quasi architecto beatae vitae dicta sunt explicabo.', 'hashtheme, Sensiv', 'Admin', '1.jpg', 0, '2023-08-16 04:17:56', NULL, NULL),
 (4, '1.jpg', 'What You Need To Know About Bone Marrow Transplantation', 'Pellentesque Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium\r\n doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et\r\n quasi architecto beatae vitae dicta sunt explicabo.', 'hashtheme, Sensiv', 'Admin', '1.jpg', 0, '2023-08-16 04:18:19', NULL, NULL),
@@ -138,7 +160,9 @@ INSERT INTO `blog_comments` (`id`, `blog_id`, `name`, `email`, `website_url`, `m
 (1, 1, 'Soumya', 'soumya.nayak@ikontel.com', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\r\n                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n                                            quis nostrud exercitation ullamco laboris nisi.', '2023-08-16 06:02:52', NULL, NULL),
 (2, 1, 'Arpita', 'arpita.s@ikontel.com', '', 'Hello from front end', '2023-08-16 06:06:05', NULL, NULL),
 (3, 1, 'Testing', 'testing@gmail.com', '', 'Testing', '2023-08-16 06:50:15', NULL, NULL),
-(4, 2, 'Soumya', 's@gmail.com', '', 'Hello', '2023-08-16 06:55:36', NULL, NULL);
+(4, 2, 'Soumya', 's@gmail.com', '', 'Hello', '2023-08-16 06:55:36', NULL, NULL),
+(5, 4, 'Soumya', 'soumya.nayak@ikontel.com', '', 'Hello from frontend', '2023-08-18 17:24:11', NULL, NULL),
+(6, 5, 'Arpita', 'arpita.s@ikontel.com', '', 'Testing', '2023-08-18 17:47:04', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -224,11 +248,43 @@ INSERT INTO `contact_enquiries` (`id`, `name`, `email`, `phone`, `subject`, `mes
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` int(11) NOT NULL,
+  `name` text DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated` timestamp NULL DEFAULT NULL,
+  `deleted` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`id`, `name`, `created`, `updated`, `deleted`) VALUES
+(1, 'Neurology', '2023-08-19 07:50:05', NULL, NULL),
+(2, 'General', '2023-08-19 07:50:16', NULL, NULL),
+(3, 'Gynecology', '2023-08-19 07:50:42', NULL, NULL),
+(4, 'Pediatrics', '2023-08-19 07:51:17', NULL, NULL),
+(5, 'Radiology', '2023-08-19 07:51:45', NULL, NULL),
+(6, 'Ophthalmology', '2023-08-19 07:51:45', NULL, NULL),
+(7, 'Orthopedics', '2023-08-19 07:52:12', NULL, NULL),
+(8, 'Gastroenterology', '2023-08-19 07:52:12', NULL, NULL),
+(9, 'Urology', '2023-08-19 07:52:39', NULL, NULL),
+(10, 'Nuclear medicine', '2023-08-19 07:52:39', NULL, NULL),
+(11, 'Dermatology', '2023-08-19 07:55:04', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctors`
 --
 
 CREATE TABLE `doctors` (
   `id` int(11) NOT NULL,
+  `dept_id` int(11) DEFAULT NULL,
   `img` text DEFAULT NULL,
   `name` text DEFAULT NULL,
   `speciality` text DEFAULT NULL,
@@ -243,12 +299,12 @@ CREATE TABLE `doctors` (
 -- Dumping data for table `doctors`
 --
 
-INSERT INTO `doctors` (`id`, `img`, `name`, `speciality`, `description`, `isActive`, `created`, `updated`, `deleted`) VALUES
-(1, 'doc.jpg', 'Stevest Henry', 'Ophthalmologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL),
-(2, 'doc.jpg', 'Williums Kevins', 'Dermatologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL),
-(3, 'doc.jpg', 'Kewillues Jenifer', 'Radiologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL),
-(4, 'doc.jpg', 'Marquis Williums', 'Urologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL),
-(5, 'doc.jpg', 'Revenna Warner', 'Neurologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL);
+INSERT INTO `doctors` (`id`, `dept_id`, `img`, `name`, `speciality`, `description`, `isActive`, `created`, `updated`, `deleted`) VALUES
+(1, 6, 'doc.jpg', 'Stevest Henry', 'Ophthalmologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL),
+(2, 11, 'doc.jpg', 'Williums Kevins', 'Dermatologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL),
+(3, 5, 'doc.jpg', 'Kewillues Jenifer', 'Radiologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL),
+(4, 9, 'doc.jpg', 'Marquis Williums', 'Urologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL),
+(5, 1, 'doc.jpg', 'Revenna Warner', 'Neurologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', 0, '2023-08-17 06:08:47', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -630,6 +686,12 @@ ALTER TABLE `about_features`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `appointments`
+--
+ALTER TABLE `appointments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `blogs`
 --
 ALTER TABLE `blogs`
@@ -657,6 +719,12 @@ ALTER TABLE `contact`
 -- Indexes for table `contact_enquiries`
 --
 ALTER TABLE `contact_enquiries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -742,6 +810,12 @@ ALTER TABLE `about_features`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `appointments`
+--
+ALTER TABLE `appointments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
@@ -751,7 +825,7 @@ ALTER TABLE `blogs`
 -- AUTO_INCREMENT for table `blog_comments`
 --
 ALTER TABLE `blog_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `clients`
@@ -770,6 +844,12 @@ ALTER TABLE `contact`
 --
 ALTER TABLE `contact_enquiries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `doctors`

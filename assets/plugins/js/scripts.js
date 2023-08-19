@@ -380,8 +380,10 @@ Table Of Contents end
 
         /* 16. DATEPICKER JS  */
 
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap4'
+        $('#apptDatepicker').datetimepicker({
+            uiLibrary: 'bootstrap4',
+            footer: true,
+            modal: true
         });
 
 

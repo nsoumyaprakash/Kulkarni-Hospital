@@ -1,8 +1,8 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        try {
-            require_once '../assets/utils/_dbconfig.php';
-            
+    try {
+        require_once '../assets/utils/_dbconfig.php';
+        
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $blogId = $_POST['blogId'];
             $name = $_POST['aname'];
             $email = $_POST['aemail'];
@@ -34,16 +34,16 @@
             echo json_encode($data);
             exit();
             
-        } catch (Exception $e) {
-            $data = [
-                "status" => "Failed",
-                "statusCode" => $e->getCode(),
-                "errorLine" => $e->getLine(),
-                "errorFile" => $e->getFile(),
-                "errorMessage" => $e->getMessage()
-            ];
-            echo json_encode($data);
-            exit();
         }
+    } catch (Exception $e) {
+        $data = [
+            "status" => "Failed",
+            "statusCode" => $e->getCode(),
+            "errorLine" => $e->getLine(),
+            "errorFile" => $e->getFile(),
+            "errorMessage" => $e->getMessage()
+        ];
+        echo json_encode($data);
+        exit();
     }
 ?>
