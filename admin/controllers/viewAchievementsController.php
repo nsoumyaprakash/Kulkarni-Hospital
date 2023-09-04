@@ -4,7 +4,7 @@
 	try {
 		require_once '../assets/includes/config.php';
 		$data = [];
-		$sql = "SELECT * FROM achievements WHERE deleted IS NULL  ORDER BY id DESC";
+		$sql = "SELECT * FROM resources WHERE deleted IS NULL  ORDER BY id DESC";
 		$result = mysqli_query($conn, $sql);
 		$count = mysqli_num_rows($result);
 		if ($count > 0) {

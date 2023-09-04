@@ -1,8 +1,8 @@
 <?php
-	require '../assets/includes/checkLogin.php';
+	require '../assets/includes/checklogin.php';
 
-	function checkExistsOrNot($conn, $editDoctorDescId) {
-        $sql = "SELECT COUNT(id) AS COUNTS FROM doctor_page_description WHERE id = '$editDoctorDescId' ";
+	function checkExistsOrNot($conn, $dept) {
+        $sql = "SELECT COUNT(id) AS COUNTS FROM departments WHERE `name` = '$dept' ";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             if (mysqli_num_rows($result) > 0) {
@@ -19,19 +19,14 @@
     }
 
 	try {
-        include "../assets/includes/utility_functions.php";
 		require_once '../assets/includes/config.php';
         
-        $editDoctorDescId = $_POST['editDoctorDescId'];
-        $addDesc = $_POST['addDesc'];
-        $aboutStatus = isset($_POST['addDescStatus']) ? 1 : 0;
+        $deptName = $_POST['deptName'];
+        $checkExistsOrNot = checkExistsOrNot($conn, $deptName);
 
-		$checkExistsOrNot = checkExistsOrNot($conn, $editDoctorDescId);
-        
         if ($checkExistsOrNot == 0) {
-            $sql = "INSERT INTO `doctor_page_description` (`content`, `isActive`, `created`, `orgCode`) VALUES ('$addDesc', '$aboutStatus', NOW(), '".$_SESSION['orgCode']."')";
+            $sql = "INSERT INTO `departments` (`name`, `created`) VALUES ('$deptName', NOW());";
         } else {
-                $sql = "UPDATE `doctor_page_description` SET `content` = '$addDesc', `isActive` = '$aboutStatus', `updated` = NOW() WHERE id = '$editDoctorDescId' ";
         }
 		$result = mysqli_query($conn, $sql);
 
@@ -50,10 +45,9 @@
 			$data = [
 				'result' => [
 					'status' => [
-						'statusCode' => "2", 
+						'statusCode' => "1", 
 						'errorCode' => mysqli_errno($conn),
 						'errorMessage' => mysqli_error($conn),
-                        'sql' => $sql,
 					]
 				]
             ];
@@ -65,12 +59,11 @@
 		$data = [
 			'result' => [
 				'status' => [
-					'statusCode' => "3", 
+					'statusCode' => "1", 
 					'errorCode' => $e->getCode(), 
 					'errorLine' => $e->getLine(), 
 					'errorMessage' => $e->getMessage(),
-					'errorFile' => $e->getFile(),
-                    'sql' => $sql
+					'errorFile' => $e->getFile()
 				]
 			]
 		];

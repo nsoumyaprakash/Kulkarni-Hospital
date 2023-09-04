@@ -14,6 +14,7 @@ const viewEnquiryInfoDetails = () => {
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
                         <th scope="col">Subject</th>
                         <th scope="col">Message</th>
                     </tr>
@@ -28,6 +29,7 @@ const viewEnquiryInfoDetails = () => {
                         <td>${i + 1}</td>
                         <td>${enquiryInfoDetails[i].name}</td>
                         <td>${enquiryInfoDetails[i].email}</td>
+                        <td>${enquiryInfoDetails[i].phone}</td>
                         <td>${enquiryInfoDetails[i].subject}</td>
                         <td>${enquiryInfoDetails[i].message}</td>
                     </tr>`;

@@ -4,7 +4,7 @@
 	try {
 		require_once '../assets/includes/config.php';
 		$data = [];
-		$sql = "SELECT * FROM doctorsinfo WHERE deleted IS NULL  ORDER BY id DESC";
+		$sql = "SELECT * FROM doctors WHERE deleted IS NULL  ORDER BY id DESC";
 		$result = mysqli_query($conn, $sql);
 		$count = mysqli_num_rows($result);
 		if ($count > 0) {

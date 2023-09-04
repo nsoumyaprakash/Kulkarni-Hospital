@@ -9,9 +9,10 @@ const viewDisclaimerDetails = () => {
             if (editDisclaimerParsedResponse['result']['status']['statusCode'] == "0") {
                 let disclaimerDetail = editDisclaimerParsedResponse['disclaimerDetails'];
                 if (disclaimerDetail.length > 0) {
+                    console.log(disclaimerDetail);
                     $("#editDisclaimerId").val(disclaimerDetail[0]['id']);
-                    $("#privacyPolicyInput").val(disclaimerDetail[0]['privacy_policy']);
-                    $("#termsAndConditionInput").val(disclaimerDetail[0]['terms_n_conditions']);
+                    $("#privacyPolicyInput").val(disclaimerDetail[0]['privacy']);
+                    $("#termsAndConditionInput").val(disclaimerDetail[0]['condition']);
 
                 } else {
                     // notification("Error", "exclamation-sign", "Internal Error", "danger");
@@ -19,7 +20,6 @@ const viewDisclaimerDetails = () => {
             } else {
 
             }
-
         }
     });
 }

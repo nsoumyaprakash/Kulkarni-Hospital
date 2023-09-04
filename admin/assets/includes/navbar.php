@@ -30,7 +30,7 @@
                     <img src="../../img/uplaods/<?php echo $_SESSION['image'] ?>" alt="Profile" class="rounded-circle">
                     <?php endif ?>
                     <?php if ($_SESSION['image'] == null): ?>
-                    <img src="../../img/profile-img.png" alt="Profile" class="rounded-circle">
+                    <img src="../../img/user.png" alt="Profile" class="rounded-circle">
                     <?php endif ?>
                     <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['name'] ?></span>
                 </a>

@@ -113,4 +113,5 @@
 
 
 <script src="../js/about.js"></script>
+
 <?php require "../assets/includes/footer.php" ?>

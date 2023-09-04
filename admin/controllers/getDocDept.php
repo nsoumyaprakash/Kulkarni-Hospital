@@ -1,10 +1,10 @@
 <?php
 	require '../assets/includes/checklogin.php';
-	
+
 	try {
 		require_once '../assets/includes/config.php';
 		$data = [];
-		$sql = "SELECT * FROM doctor_page_description ORDER BY id DESC";
+		$sql = "SELECT * FROM departments WHERE deleted IS NULL ORDER BY id DESC";
 		$result = mysqli_query($conn, $sql);
 		$count = mysqli_num_rows($result);
 		if ($count > 0) {
@@ -17,8 +17,7 @@
 						'statusCode' => "0"
 					]
 				],
-				'doctorDescDetails' => $data,
-                'sql' => $sql
+				'deptDetails' => $data
 			];
 			echo json_encode($mainData);
 			exit();
@@ -29,7 +28,6 @@
 						'statusCode' => "1", 
 						'errorCode' => "300",
 						'errorMessage' => "DATA NOT AVAILABLE",
-                        'sql' => $sql,
 					]
 				]
 			];

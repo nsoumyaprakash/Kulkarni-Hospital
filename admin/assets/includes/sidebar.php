@@ -61,14 +61,14 @@
         </li>
         <!-- End doctorsInfo Nav -->
 
-        <!-- <li class="nav-item">
-            <a class="nav-link collapsed" href="packages.php">
-                <i class="bi bi-box-seam"></i><span>Packages</span>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="departments.php">
+                <i class="bi bi-box-seam"></i><span>Departments</span>
             </a>
-        </li> -->
+        </li>
         <!-- End packages Nav -->
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#menu-nav" data-bs-toggle="collapse">
                 <i class="bi bi-menu-button"></i><span>Menu Management</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -84,7 +84,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> -->
         <!-- End Menu Nav -->
 
         <li class="nav-item">

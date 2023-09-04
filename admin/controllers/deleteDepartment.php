@@ -1,25 +1,16 @@
 <?php
-	require '../assets/includes/checkLogin.php';
+	require '../assets/includes/checklogin.php';
 
 	try {
-        include "../assets/includes/utility_functions.php";
 		require_once '../assets/includes/config.php';
-        
-        $addIcons = $_POST['addIcons'];
-        $addNumbers = $_POST['addNumbers'];
-        $addTitle = $_POST['addTitle'];
-        $addStatus = isset($_POST['addStatus']) ? 1 : 0;
-        
-        $sql = "INSERT INTO `resources` (`icon`, `count`, `title`,`created`) VALUES ('$addIcons', '$addNumbers', '$addTitle',NOW())";
-        
+		$deptId = $_POST['deptId'];
+		$sql = "UPDATE departments SET deleted = NOW() WHERE id = $deptId ";
 		$result = mysqli_query($conn, $sql);
-
 		if ($result) {
 			$data = [
 				'result' => [
 					'status' => [
-						'statusCode' => "0",
-                        'sql' => $sql
+						'statusCode' => "0"
 					]
 				]
 			];
@@ -34,10 +25,11 @@
 						'errorMessage' => mysqli_error($conn),
 					]
 				]
-            ];
+			];
 			echo json_encode($data);
 			exit();
 		}
+		
 
 	} catch (Exception $e) {
 		$data = [

@@ -26,7 +26,7 @@ const viewAchievementsDetails = () => {
                         <td>${i + 1}</td>
                         <td><i class="${achievementsDetails[i].icon}"></i></td>
                         <td>${achievementsDetails[i].title == null ? "" : achievementsDetails[i].title}</td>
-                        <td>${achievementsDetails[i].numbers == null ? "" : achievementsDetails[i].numbers}</td>`;
+                        <td>${achievementsDetails[i].count == null ? "" : achievementsDetails[i].count}</td>`;
 
                     if (achievementsDetails[i].isActive == '1') {
                         achievementsParsedResponseInfo += `<td>Published</td>`;
@@ -72,7 +72,7 @@ const editAchievementsDetails = (achievementsId) => {
 
                 if (achievementsDetail.length > 0) {
                     $("#editAchievementsId").val(achievementsId);
-                    $("#editNumbers").val(achievementsDetail[0]['numbers']);
+                    $("#editNumbers").val(achievementsDetail[0]['count']);
                     $("#editTitle").val(achievementsDetail[0]['title']);
                     $("#showEditIcons").html(`< i class="${achievementsDetail[0]['icon']}" ></ > ${achievementsDetail[0]['icon']} `);
                     $("#editIcons").val(achievementsDetail[0]['icon']);

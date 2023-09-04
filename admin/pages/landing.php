@@ -34,22 +34,6 @@
                                     <textarea class="form-control" rows="3" id="descInput" name="descInput"></textarea>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="linkInput" class="form-label">Link *</label>
-                                    <input type="text" class="form-control" id="linkInput" name="linkInput">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="textInput" class="form-label">Link Text *</label>
-                                    <input type="text" class="form-control" id="textInput" name="textInput">
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="form-check-label" for="addLandingStatus">Status</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="addLandingStatus"
-                                            name="addLandingStatus">
-                                        <label class="form-check-label" id="addLandingStatusOption">Draft</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="custom-file-upload">
                                         <input type="file" id="imageInput" name="imageInput">
                                         <label for="imageInput"><i class="bi bi-upload me-2"></i>Upload Logo</label>
@@ -58,17 +42,6 @@
                                         style="display: none;">
                                     <input type="hidden" name="editImageHiddenFile" id="editImageHiddenFile">
                                     <img src="" id="storedViewImage" class="img-thumbnail">
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="custom-file-upload">
-                                        <input type="file" id="bgImageInput" name="bgImageInput">
-                                        <label for="bgImageInput"><i class="bi bi-upload me-2"></i>Upload BG
-                                            Image</label>
-                                    </div>
-                                    <img class="img-thumbnail" id="previewEditBgImage" alt="Preview Image"
-                                        style="display: none;">
-                                    <input type="hidden" name="editBgImageHiddenFile" id="editBgImageHiddenFile">
-                                    <img src="" id="storedViewBgImage" class="img-thumbnail">
                                 </div>
                                 <div class="pt-3 border-top">
                                     <button type="reset" class="btn btn-sm btn-warning me-2"><i

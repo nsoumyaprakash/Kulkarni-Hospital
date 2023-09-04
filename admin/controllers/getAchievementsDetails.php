@@ -5,7 +5,7 @@
 		require_once '../assets/includes/config.php';
 		$achievementsId = trim($_POST['achievementsId']);
 		$data = [];
-		$sql = "SELECT * FROM achievements WHERE id = $achievementsId  ORDER BY id DESC";
+		$sql = "SELECT * FROM resources WHERE id = $achievementsId  ORDER BY id DESC";
 		$result = mysqli_query($conn, $sql);
 		$count = mysqli_num_rows($result);
 		if ($count > 0) {

@@ -5,7 +5,7 @@
 		require_once '../assets/includes/config.php';
 		$doctorId = trim($_POST['doctorId']);
 		$data = [];
-		$sql = "SELECT * FROM doctorsinfo WHERE id = $doctorId  ORDER BY id DESC";
+		$sql = "SELECT * FROM doctors WHERE id = $doctorId  ORDER BY id DESC";
 		$result = mysqli_query($conn, $sql);
 		$count = mysqli_num_rows($result);
 		if ($count > 0) {

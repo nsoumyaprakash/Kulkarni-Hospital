@@ -24,14 +24,14 @@ const viewDoctorDetails = () => {
                 for (let i = 0; i < doctorDetails.length; i++) {
                     doctorParsedResponseInfo += `<tr>
                                                     <td>${i + 1}</td>`;
-                    if (doctorDetails[i].imgSrc != null) {
-                        doctorParsedResponseInfo += `<td><img src="../../img/doctors/${doctorDetails[i].imgSrc}" onclick="showEnlargedImage('../../img/doctors/${doctorDetails[i].imgSrc}');"></td>`;
+                    if (doctorDetails[i].img != null) {
+                        doctorParsedResponseInfo += `<td><img src="../../img/doctors/${doctorDetails[i].img}" onclick="showEnlargedImage('../../img/doctors/${doctorDetails[i].img}');"></td>`;
                     } else {
                         doctorParsedResponseInfo += `<td></td>`;
                     }
                     doctorParsedResponseInfo += `<td>${doctorDetails[i].name == null ? "" : doctorDetails[i].name}</td>
                         <td>${doctorDetails[i].speciality == null ? "" : doctorDetails[i].speciality}</td>
-                        <td>${doctorDetails[i].about == null ? "" : doctorDetails[i].about}</td>
+                        <td>${doctorDetails[i].description == null ? "" : doctorDetails[i].description}</td>
                         <td>
                             <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal"
                                 data-bs-target="#editDoctorModal" onclick="editDoctorsDetails(${doctorDetails[i].id});"><i
@@ -71,14 +71,9 @@ const editDoctorsDetails = (doctorId) => {
                     $("#editDoctorId").val(doctorId);
                     $("#editName").val(doctorDetail[0]['name']);
                     $("#editSpeciality").val(doctorDetail[0]['speciality']);
-                    $("#editAbout").val(doctorDetail[0]['about']);
-                    const socialLinks = doctorDetail[0]['socialLinks'];
-                    const individualLinks = JSON.parse(socialLinks);
+                    $("#editDept").val(doctorDetail[0]['dept_id']);
+                    $("#editAbout").val(doctorDetail[0]['description']);
 
-                    $("#editFacebook").val(individualLinks[0]);
-                    $("#editInstagram").val(individualLinks[1]);
-                    $("#editTwitter").val(individualLinks[2]);
-                    $("#editLinkedin").val(individualLinks[3]);
                     if (doctorDetail[0]['isActive'] == "0") {
                         $("#editStatus").prop("checked", false);
                     } else {
@@ -112,43 +107,6 @@ const editDoctorsDetails = (doctorId) => {
     });
 }
 
-const viewDoctorDescDetails = () => {
-    $.ajax({
-        url: '../controllers/viewDoctorDescController.php',
-        type: "POST",
-        data: "fetch=true",
-        cache: false,
-        success: (response) => {
-            const editDoctorDescParsedResponse = JSON.parse(response);
-            if (editDoctorDescParsedResponse['result']['status']['statusCode'] == "0") {
-                let doctorDescDetail = editDoctorDescParsedResponse['doctorDescDetails'];
-                if (doctorDescDetail.length > 0) {
-                    $("#editDoctorDescId").val(doctorDescDetail[0]['id']);
-                    $("#addDesc").val(doctorDescDetail[0]['content']);
-
-                    if (doctorDescDetail[0]['isActive'] == "0") {
-                        $("#addDescStatus").prop("checked", false);
-                    } else {
-                        $("#addDescStatus").prop("checked", true);
-                    }
-                    let editStatusCheckbox = document.getElementById('addDescStatus');
-                    if (editStatusCheckbox.checked == '1') {
-                        $("#addDescStatusOption").html("Published");
-                    } else {
-                        $("#addDescStatusOption").html("Draft");
-                    }
-
-                } else {
-                    // notification("Error", "exclamation-sign", "Internal Error", "danger");
-                }
-            } else {
-
-            }
-
-        }
-    });
-}
-
 
 
 //delete
@@ -175,10 +133,31 @@ async function deleteDoctor(doctorId) {
     }
 }
 
+function getDept() {
+    $.ajax({
+        url: '../controllers/getDocDept.php',
+        type: "GET",
+        success: function (response) {
+            const parsedResponse = JSON.parse(response);
+            if (parsedResponse.result.status.statusCode == "0") {
+                const deptDetails = parsedResponse.deptDetails;
+                let html = "<option selected>Select Dept.</option>";
+                deptDetails.forEach(item => {
+                    html += `<option value="${item.id}">${item.name}</option>`;
+                });
+                $("#addDept").html(html);
+                $("#editDept").html(html);
+            } else {
+                sweetAlert("error", parsedResponse.result.status.errorMessage);
+            }
+        }
+    });
+}
+
 
 $(document).ready(() => {
     viewDoctorDetails();
-    viewDoctorDescDetails();
+    getDept();
 
     // Get the input element
     const imageInput = document.getElementById('addImageInput');
@@ -260,16 +239,6 @@ $(document).ready(() => {
         }
     });
 
-    let addDocterDescCheckbox = document.getElementById('addDescStatus');
-    let addDescStatusOutput = document.getElementById('addDescStatusOption');
-    addDocterDescCheckbox.addEventListener('change', function () {
-        if (addDocterDescCheckbox.checked) {
-            addDescStatusOutput.textContent = 'Published';
-        } else {
-            addDescStatusOutput.textContent = 'Draft';
-        }
-    });
-
     $("#addDoctorForm").submit(function (e) {
         e.preventDefault(); // Prevent the form from submitting normally
 
@@ -329,34 +298,4 @@ $(document).ready(() => {
         $("#editDoctorCloseButton").click();
         viewDoctorDetails();
     });
-
-    $("#addDoctorDescForm").submit(function (e) {
-        e.preventDefault(); // Prevent the form from submitting normally
-
-        // Get the form data
-        const formData = new FormData(this);
-
-        // Make the AJAX request
-        $.ajax({
-            url: '../controllers/addDoctorDescController.php',
-            type: 'POST',
-            data: formData,
-            processData: false, // Important! Prevent jQuery from processing the data
-            contentType: false, // Important! Set the content type to false
-            success: function (response) {
-                const parsedResponse = JSON.parse(response);
-                if (parsedResponse.result.status.statusCode == "0") {
-                    sweetAlert("success", "Updated Successfully");
-                } else {
-                    sweetAlert("error", parsedResponse.result.status.errorMessage);
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error(error); // Print any error messages
-            }
-        });
-        viewAboutDetails();
-
-    });
-
 });

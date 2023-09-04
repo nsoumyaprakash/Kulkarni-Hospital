@@ -63,15 +63,20 @@
                                                     placeholder="Twitter Link">
                                             </div>
                                             <div class="col-md-6 mb-3">
-                                                <input type="text" class="form-control" id="linkedin" name="linkedin"
-                                                    placeholder="Linkedin Link">
+                                                <input type="text" class="form-control" id="youtubePlay"
+                                                    name="youtubePlay" placeholder="Linkedin Link">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="otherLink" class="form-label">Opening Hours</label>
-                                        <textarea type="text" class="form-control" id="otherLink" name="otherLink"
+                                        <textarea type="text" class="form-control" id="openingHours" name="openingHours"
                                             placeholder="Enter Opening Hours" rows="2"></textarea>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="copyRight" class="form-label">Copy Right</label>
+                                        <textarea type="text" class="form-control" id="copyRight" name="copyRight"
+                                            rows="2"></textarea>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-check-label" for="addStatus">Status</label>

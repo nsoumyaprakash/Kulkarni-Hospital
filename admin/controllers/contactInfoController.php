@@ -2,7 +2,7 @@
 	require '../assets/includes/checklogin.php';
 
 	function checkExistsOrNot($conn, $contactId) {
-        $sql = "SELECT COUNT(id) AS COUNTS FROM contactinfo WHERE id = '$contactId' ";
+        $sql = "SELECT COUNT(id) AS COUNTS FROM contact WHERE id = '$contactId' ";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             if (mysqli_num_rows($result) > 0) {
@@ -23,21 +23,21 @@
 		require_once '../assets/includes/config.php';
 
         $contactId = $_POST['editContactInfoId'];
-		$shortText = $_POST['shortText'];
 		$mapIframe = $_POST['mapIframe'];
 		$address = $_POST['address'];
 		$email = $_POST['email'];
-		$call = $_POST['call'];
-		$otherLink = $_POST['otherLink'];
+		$phone = $_POST['call'];
+		$opening_hours = $_POST['openingHours'];
         $socialLinks = $_POST['socialLinks'];
-		$status = isset($_POST['addStatus']) ? 1 : 0;
+        $copyright = $_POST['copyRight'];
+		$status = isset($_POST['addStatus']) ? 0 : 1;
 		$checkExistsOrNot = checkExistsOrNot($conn, trim($contactId));
 
         if ($checkExistsOrNot == 0) {
-            $sql = "INSERT INTO `contactinfo` (`shortText`, `mapIframe`, `other`, `address`, `email`, `phone`, `isActive`, `created`, `social_links`, `orgCode`) VALUES ('$shortText', '$mapIframe', '$otherLink', '$address', '$email', '$call', '$status', NOW(), '$socialLinks', '".$_SESSION['orgCode']."')";
+            $sql = "INSERT INTO `contact` (`map`, `address`, `email`, `phone`, `social_links`, `opening_hours`, `copyright`, `isActive`, `created`) VALUES ('$mapIframe', '$address', '$email', '$phone', '$socialLinks', '$opening_hours', '$copyright', '$status', NOW())";
         } else {
             
-            $sql = "UPDATE `contactinfo` SET `shortText` = '$shortText', `mapIframe` = '$mapIframe', `other` = '$otherLink', `address` = '$address', `email` = '$email', `phone` = '$call', `isActive` = '$status', `social_links` = '$socialLinks', `updated` = NOW() WHERE id = '$contactId' ";
+            $sql = "UPDATE `contact` SET `map` = '$mapIframe', `address` = '$address', `email` = '$email', `phone` = '$phone', `social_links` = '$socialLinks', `opening_hours` = '$opening_hours',`copyright` = '$copyright', `isActive` = '$status', `updated` = NOW() WHERE id = '$contactId' ";
         }
 		$result = mysqli_query($conn, $sql);
 

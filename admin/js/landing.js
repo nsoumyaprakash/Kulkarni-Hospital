@@ -10,38 +10,16 @@ const viewLandingDetails = () => {
                 let landingDetail = editLandingParsedResponse['landingDetails'];
                 if (landingDetail.length > 0) {
                     $("#editLandingtId").val(landingDetail[0]['id']);
-                    $("#orgNameInput").val(landingDetail[0]['organization_name']);
-                    $("#titleInput").val(landingDetail[0]['title']);
-                    $("#descInput").val(landingDetail[0]['description']);
-                    $("#linkInput").val(landingDetail[0]['link']);
-                    $("#textInput").val(landingDetail[0]['linkText']);
+                    $("#orgNameInput").val(landingDetail[0]['org_name']);
+                    $("#titleInput").val(landingDetail[0]['heading']);
+                    $("#descInput").val(landingDetail[0]['paragraph']);
                     $("#editImageHiddenFile").val(landingDetail[0]['logo']);
                     if (landingDetail[0]['logo'] != null) {
-                        $("#storedViewImage").attr("src", '../../img/uplaods/' + landingDetail[0]['logo']);
+                        $("#storedViewImage").attr("src", '../../img/' + landingDetail[0]['logo']);
                         $("#storedViewImage").attr("alt", landingDetail[0]['logo']);
                     } else {
                         $("#storedViewImage").attr("src", "");
                         $("#storedViewImage").attr("alt", "");
-                    }
-                    $("#editBgImageHiddenFile").val(landingDetail[0]['bg_img']);
-                    if (landingDetail[0]['bg_img'] != null) {
-                        $("#storedViewBgImage").attr("src", '../../img/uplaods/' + landingDetail[0]['bg_img']);
-                        $("#storedViewBgImage").attr("alt", landingDetail[0]['bg_img']);
-                    } else {
-                        $("#storedViewBgImage").attr("src", "");
-                        $("#storedViewBgImage").attr("alt", "");
-                    }
-
-                    if (landingDetail[0]['isActive'] == "0") {
-                        $("#addLandingStatus").prop("checked", false);
-                    } else {
-                        $("#addLandingStatus").prop("checked", true);
-                    }
-                    let editStatusCheckbox = document.getElementById('addLandingStatus');
-                    if (editStatusCheckbox.checked == '1') {
-                        $("#addLandingStatusOption").html("Published");
-                    } else {
-                        $("#addLandingStatusOption").html("Draft");
                     }
 
                 } else {
@@ -91,49 +69,6 @@ $(document).ready(() => {
         }
     });
 
-    // Get the input element
-    const bgImageEditInput = document.getElementById('bgImageInput');
-
-    // Get the preview image element
-    const previewEditBgImage = document.getElementById('previewEditBgImage');
-
-    // Get the Stored image element
-    const storedViewBgImage = document.getElementById('storedViewBgImage');
-
-    // Listen for changes in the input file selection
-    bgImageEditInput.addEventListener('change', function (event) {
-        // Check if a file is selected
-        if (event.target.files && event.target.files[0]) {
-            // Create a FileReader object
-            const reader = new FileReader();
-
-            // Set the image source once it's loaded
-            reader.onload = function (e) {
-                previewEditBgImage.src = e.target.result;
-                previewEditBgImage.style.display = 'block';
-                storedViewBgImage.style.display = 'none';
-            };
-
-            // Read the selected file as a data URL
-            reader.readAsDataURL(event.target.files[0]);
-        } else {
-            // No file selected, hide the preview
-            previewEditBgImage.style.display = 'none';
-            storedViewBgImage.style.display = 'block';
-        }
-    });
-
-
-    let addStatusCheckbox = document.getElementById('addLandingStatus');
-    let addStatusOutput = document.getElementById('addLandingStatusOption');
-    addStatusCheckbox.addEventListener('change', function () {
-        if (addStatusCheckbox.checked) {
-            addStatusOutput.textContent = 'Published';
-        } else {
-            addStatusOutput.textContent = 'Draft';
-        }
-    });
-
     $("#landingForm").submit(function (e) {
         e.preventDefault(); // Prevent the form from submitting normally
 
@@ -151,6 +86,7 @@ $(document).ready(() => {
                 const parsedResponse = JSON.parse(response);
                 if (parsedResponse.result.status.statusCode == "0") {
                     sweetAlert("success", "Updated Successfully");
+                    viewLandingDetails();
                 } else {
                     sweetAlert("error", parsedResponse.result.status.errorMessage);
                 }
@@ -159,9 +95,6 @@ $(document).ready(() => {
                 console.error(error); // Print any error messages
             }
         });
-        viewLandingDetails();
-
     });
-
 });
 

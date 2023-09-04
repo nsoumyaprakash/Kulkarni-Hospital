@@ -2,7 +2,7 @@
 	require '../assets/includes/checkLogin.php';
 
 	function checkExistsOrNot($conn, $disclaimerId) {
-        $sql = "SELECT COUNT(id) AS COUNTS FROM disclaimer WHERE id = '$disclaimerId' ";
+        $sql = "SELECT COUNT(id) AS COUNTS FROM terms WHERE id = '$disclaimerId' ";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             if (mysqli_num_rows($result) > 0) {
@@ -31,9 +31,9 @@
         $checkExistsOrNot = checkExistsOrNot($conn, $aboutId);
         
         if ($checkExistsOrNot == 0) {
-            $sql = "INSERT INTO `disclaimer` (`privacy_policy`, `terms_n_conditions`, `created`, `orgCode`) VALUES ('$privacyPolicyInput', '$termsAndConditionInput', NOW(), '".$_SESSION['orgCode']."')";
+            $sql = "INSERT INTO `terms` (`privacy`, `condition`, `created`) VALUES ('$privacyPolicyInput', '$termsAndConditionInput', NOW())";
         } else {
-            $sql = "UPDATE `disclaimer` SET `privacy_policy` = '$privacyPolicyInput', `terms_n_conditions` = '$termsAndConditionInput', `updated` = NOW() WHERE id = '$disclaimerId' ";
+            $sql = "UPDATE `terms` SET `privacy` = '$privacyPolicyInput', `condition` = '$termsAndConditionInput', `updated` = NOW() WHERE id = '$disclaimerId' ";
         }
         
 		$result = mysqli_query($conn, $sql);

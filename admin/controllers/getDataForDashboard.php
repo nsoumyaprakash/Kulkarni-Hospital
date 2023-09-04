@@ -6,7 +6,7 @@
 		$fromDate = date('Y-m-d');
 		$toDate = date('Y-m-d');
         
-		$totalEnquiries = "SELECT COUNT(id) as tot_enquiries FROM inquiryinfo WHERE created  >= '$fromDate 00:00:00' AND created <= '$toDate 23:59:59' ";
+		$totalEnquiries = "SELECT COUNT(id) as tot_enquiries FROM contact_enquiries WHERE created  >= '$fromDate 00:00:00' AND created <= '$toDate 23:59:59' ";
 		
 		$tot_enquiries = 0; 
         
