@@ -1,2 +1,2 @@
 2 :- ui for adding testimonials,
-3:- ui for adding img to galery and adding banners.
+3 :- ui for adding img to galery and adding banners.
